@@ -10,6 +10,7 @@ Todo:
 
 - Make the store initialization happen in the component
 - Clean up and make v-for for the start / reset buttons
+- Add timer output to title (?)
 
 ## Commands
 
