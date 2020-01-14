@@ -1,6 +1,15 @@
-# pomodoro
+# pomodoro-timer
 
-> My premium Vue project
+> My pomodoro-timer vue-component.
+
+I wanted to detach from my pomodoro-timer on my phone, and any online ones.
+And why not?
+This will be my first project where i'll follow up and add more features as i need them.
+
+Todo:
+
+- Make the store initialization happen in the component
+- Clean up and make v-for for the start / reset buttons
 
 ## Commands
 
@@ -37,8 +46,7 @@ Run `yarn report` to get a report of bundle size which helps you:
 
 Your app is now offline-ready (only in production bundle), which means you can visit it without network.
 
-Here we use a default [manifest.json](./static/manifest.json) to configurure your pwa, for example, to enable *Add to Home Screen* feature on Android. It will be copied directly to `./dist/manifest.json`.
-
+Here we use a default [manifest.json](./static/manifest.json) to configurure your pwa, for example, to enable _Add to Home Screen_ feature on Android. It will be copied directly to `./dist/manifest.json`.
 
 For all the available options, please head to [poi-preset-offline](https://github.com/egoist/poi/tree/master/packages/poi-preset-offline#api).
 
