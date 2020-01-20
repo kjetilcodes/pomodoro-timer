@@ -1,11 +1,10 @@
 <template>
   <div>
-    <Pomodoro></Pomodoro>
+    <Pomodoro styles="{buttons: 1}"></Pomodoro>
   </div>
 </template>
 
 <script>
-
 import Pomodoro from "./Pomodoro.vue";
 export default {
   name: "app",

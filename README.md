@@ -7,10 +7,8 @@ And why not?
 This will be my first project where i'll follow up and add more features as i need them.
 
 Todo:
-
-- Make the store initialization happen in the component
-- Clean up and make v-for for the start / reset buttons
-- Add timer output to title (?)
+- Style it a bit.
+- Add store-template to own file to import to main-store.
 
 ## Commands
 

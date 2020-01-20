@@ -12,9 +12,16 @@ module.exports = {
     template: path.join(__dirname, 'index.ejs')
   },
   postcss: {
-    plugins: [
-      // Your postcss plugins
-    ]
+  },
+  css: {
+    loaderOptions: {
+      // pass options to sass-loader
+      sass: {
+        // @/ is an alias to src/
+        // so this assumes you have a file named `src/variables.scss`
+        //     data: `@import "@/variables.scss";`
+      }
+    }
   },
   presets: [
     require('poi-preset-bundle-report')(),
