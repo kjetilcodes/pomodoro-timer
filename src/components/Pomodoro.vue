@@ -15,6 +15,7 @@
         v-for="activity in activities"
         @click="setActivity(activity.internal)"
         class="style1"
+        :data-currentActivity="[activity.internal === currentActivity ? 'active' : 'inactive']"
         :disabled="active"
         :key="activity.internal"
       >{{ activity.presentable }}</button>
@@ -39,6 +40,9 @@ export default {
     },
     activities() {
       return this.$store.state.pomodoro.activities;
+    },
+    currentActivity() {
+      return this.$store.state.pomodoro.activity;
     },
     actions() {
       return [
@@ -76,14 +80,9 @@ export default {
 </script>
 
 <style lang="scss">
-.timer-display {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-  font-size: 4rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+button {
+  background: none;
+  border: none;
 }
 
 button.style1 {
@@ -95,10 +94,45 @@ button.style1 {
   display: flex;
   flex-direction: row;
   max-width: 500px;
+  border: 1px solid black;
+  padding: 20px;
+
+  .timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin: 5px;
+    font-size: 4rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
   .buttons,
   .activities {
     display: flex;
     flex-direction: column;
   }
+
+  .buttons button.style1,
+  .activities button.style1 {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+  .activities button.style1 {
+    background-color: #3366bb;
+    color: white;
+  }
+
+  .buttons button.style1:disabled {
+    background-color: #2222;
+    color: black;
+  }
+}
+
+button.style1[data-currentActivity="active"] {
+  background-color: #114499 !important;
 }
 </style>
