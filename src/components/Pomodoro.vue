@@ -5,7 +5,6 @@
       <button
         v-for="action in actions"
         @click="timerAction(action.type)"
-        v-if="action.condition"
         :key="action.type"
         :class="action.type"
         class="style1 pomodoroButton"
@@ -53,7 +52,9 @@ export default {
         { type: "Start", condition: !this.active },
         { type: "Stop", condition: this.active },
         { type: "Reset", condition: !this.active && this.paused }
-      ];
+      ].filter(e => {
+        return e.condition;
+      });
     }
   },
   methods: {
