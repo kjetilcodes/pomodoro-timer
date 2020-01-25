@@ -5,9 +5,10 @@
       <button
         v-for="action in actions"
         @click="timerAction(action.type)"
-        :disabled="action.whenActive"
+        v-if="action.condition"
         :key="action.type"
-        class="style1"
+        :class="action.type"
+        class="style1 pomodoroButton"
       >{{ action.type }} Timer</button>
     </div>
     <div class="activities">
@@ -38,6 +39,9 @@ export default {
     active() {
       return this.$store.state.pomodoro.active;
     },
+    paused() {
+      return this.$store.state.pomodoro.paused;
+    },
     activities() {
       return this.$store.state.pomodoro.activities;
     },
@@ -46,9 +50,9 @@ export default {
     },
     actions() {
       return [
-        { type: "Start", whenActive: this.active },
-        { type: "Stop", whenActive: !this.active },
-        { type: "Reset", whenActive: this.active }
+        { type: "Start", condition: !this.active },
+        { type: "Stop", condition: this.active },
+        { type: "Reset", condition: !this.active && this.paused }
       ];
     }
   },
@@ -132,6 +136,17 @@ button.style1 {
   }
 }
 
+.pomodoroButton.Stop {
+  background-color: red;
+}
+.pomodoroButton.Start {
+  background-color: green;
+}
+
+.pomodoroButton.Start,
+.pomodoroButton.Stop {
+  color: white;
+}
 button.style1[data-currentActivity="active"] {
   background-color: #114499 !important;
 }

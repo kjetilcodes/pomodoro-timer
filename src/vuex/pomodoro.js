@@ -1,6 +1,7 @@
 export const pomodoroState = {
   active: false,
   activity: 'work',
+  paused: false,
   activities: [
     { internal: 'work', presentable: 'Work' },
     { internal: 'pause', presentable: 'Pause' },
@@ -24,10 +25,12 @@ export const pomodoroMutations = {
   reset(state) {
     state = state.pomodoro
     state.time = 0
+    state.paused = false
   },
   start(state) {
     state = state.pomodoro
     state.active = true
+    state.paused = false
     state.time = state.time || state.defaults[state.activity].time
     state.timerObject = window.setInterval(() => {
       state.time -= 1000
@@ -42,10 +45,12 @@ export const pomodoroMutations = {
   stop(state) {
     state = state.pomodoro
     state.active = false
+    state.paused = true
     window.clearInterval(state.timerObject)
   },
   setActivity(state, activity) {
     state = state.pomodoro
     state.activity = activity
+    state.paused = false
   }
 }
