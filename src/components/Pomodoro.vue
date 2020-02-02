@@ -7,14 +7,14 @@
         @click="timerAction(action.type)"
         :key="action.type"
         :class="action.type"
-        class="style1 pomodoroButton"
+        class="pomodoro pomodoroButton"
       >{{ action.type }} Timer</button>
     </div>
     <div class="activities">
       <button
         v-for="activity in activities"
         @click="setActivity(activity.internal)"
-        class="style1"
+        class="pomodoro"
         :data-currentActivity="[activity.internal === currentActivity ? 'active' : 'inactive']"
         :disabled="active"
         :key="activity.internal"
@@ -26,7 +26,6 @@
 <script>
 export default {
   name: "Pomodoro",
-  props: ["styles"],
   computed: {
     time() {
       const activity = this.$store.state.pomodoro.activity;
@@ -42,7 +41,13 @@ export default {
       return this.$store.state.pomodoro.paused;
     },
     activities() {
-      return this.$store.state.pomodoro.activities;
+      return this.$store.state.pomodoro.activities.filter(e => {
+        const isNotActive = !this.$store.state.pomodoro.active;
+        const isNotPaused = !this.$store.state.pomodoro.paused;
+        const isCurrentActivity =
+          this.$store.state.pomodoro.activity == e.internal;
+        return (isNotActive && isNotPaused) || isCurrentActivity;
+      });
     },
     currentActivity() {
       return this.$store.state.pomodoro.activity;
@@ -90,7 +95,7 @@ button {
   border: none;
 }
 
-button.style1 {
+button.pomodoro {
   width: 100px;
   height: 50px;
 }
@@ -119,19 +124,19 @@ button.style1 {
     flex-direction: column;
   }
 
-  .buttons button.style1,
-  .activities button.style1 {
+  .buttons button.pomodoro,
+  .activities button.pomodoro {
     border: 1px solid black;
     border-radius: 5px;
     margin: 2px;
   }
 
-  .activities button.style1 {
+  .activities button.pomodoro {
     background-color: #3366bb;
     color: white;
   }
 
-  .buttons button.style1:disabled {
+  .buttons button.pomodoro:disabled {
     background-color: #2222;
     color: black;
   }
@@ -148,7 +153,7 @@ button.style1 {
 .pomodoroButton.Stop {
   color: white;
 }
-button.style1[data-currentActivity="active"] {
+button.pomodoro[data-currentActivity="active"] {
   background-color: #114499 !important;
 }
 </style>
