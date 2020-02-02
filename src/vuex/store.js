@@ -1,5 +1,4 @@
-import { pomodoroState, pomodoroMutations } from './pomodoro.js'
-
+import { pomodoroState, pomodoroMutations } from '../components/Pomodoro.vue'
 const store = {
   state: {
     pomodoro: { ...pomodoroState }

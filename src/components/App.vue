@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Pomodoro styles="{buttons: 1}"></Pomodoro>
+    <Pomodoro />
   </div>
 </template>
 
