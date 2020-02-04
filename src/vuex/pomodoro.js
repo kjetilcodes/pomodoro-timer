@@ -25,13 +25,11 @@ export default {
     },
 
     mutations: {
-      reset(stateObject) {
-        const state = stateObject
+      reset(state) {
         state.time = 0;
         state.paused = false;
       },
-      start(stateObject) {
-        const state = stateObject
+      start(state) {
         state.active = true;
         state.paused = false;
         state.time = state.time || state.defaults[state.activity].time;
@@ -45,14 +43,12 @@ export default {
           }
         }, 1000);
       },
-      stop(stateObject) {
-        const state = stateObject
+      stop(state) {
         state.active = false;
         state.paused = true;
         window.clearInterval(state.timerObject);
       },
-      setActivity(stateObject, activity) {
-        const state = stateObject
+      setActivity(state, activity) {
         state.activity = activity;
         state.paused = false;
       }
