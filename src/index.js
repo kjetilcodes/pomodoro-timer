@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import App from './components/App.vue'
 import Store from './vuex/store.js'
 Vue.use(Vuex)
-const store = new Vuex.Store(Store)
+const store = Store
 
 Vue.config.productionTip = false
 
