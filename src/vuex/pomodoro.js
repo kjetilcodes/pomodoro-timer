@@ -1,19 +1,3 @@
-class DailyObject {
-  constructor({ dateObject }) {
-    this.date = {
-      JSON: dateObject.getJSON(),
-      day: dateobject.getDate(),
-      month: dateobject.getMonth(),
-      year: dateObject.getFullYear()
-    }
-    this.activities = {
-      work: [],
-      pause: [],
-      longPause: []
-    }
-  }
-}
-
 class SessionObject {
   constructor({ start, end, activity, duration }) {
     this.start = start
