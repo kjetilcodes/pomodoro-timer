@@ -28,7 +28,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    ...pomodoro,
+    pomodoro,
     moduleB: {
       state: {},
       mutations:{}
@@ -41,5 +41,3 @@ This makes sense if you look at the pomodoro.js store file and pomodoro.vue as i
 
 
 ## todo: 
- - Make an event that triggers when countdown is done, make it return an object with the information about the countdown
- - Add sessions?
