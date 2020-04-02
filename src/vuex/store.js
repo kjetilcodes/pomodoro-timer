@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const Store = new Vuex.Store({
   modules: {
-    ...pomodoro
+    pomodoro
   }
 })
 console.log(Store)
