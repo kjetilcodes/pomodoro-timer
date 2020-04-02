@@ -30,7 +30,6 @@ export default {
   name: "Pomodoro",
   computed: {
     time() {
-    console.log(this.$store.state)
       const activity = this.$store.state.pomodoro.activity;
       const timeInMs =
         this.$store.state.pomodoro.time ||

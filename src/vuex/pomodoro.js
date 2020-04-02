@@ -22,11 +22,19 @@ class SessionObject {
     this.duration = duration
     this.completed = false
   }
+
+  stop(completed) {
+    this.end = Date.now()
+    this.completed = completed
+    this.duration = this.end - this.start
+    return this
+  }
 }
 
 export default {
     namespaced: true,
     state: {
+      sessionObjects: [],
       active: false,
       activity: "work",
       paused: false,
@@ -54,7 +62,13 @@ export default {
       reset(state) {
         state.time = 0;
         state.paused = false;
+        state.sessionObject.stop(false)
+        state.sessionObjects.push(state.sessionObject)
+        state.sessionObject = {}
+     
+         
       },
+
       start(state) {
         state.active = true;
         state.paused = false;
@@ -68,7 +82,9 @@ export default {
           if (state.time <= 0) {
             const sound = new Audio("../static/alarm.mp3");
             state.active = false;
-            state.sessionObject.completed = true
+        state.sessionObject.stop(true)
+        state.sessionObjectspush(state.sessionObject)
+        state.sessionObject = {}
             sound.play();
             window.clearInterval(state.timerObject);
           }
